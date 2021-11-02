@@ -3,6 +3,9 @@ import express from 'express';
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded({
+    extended: true
+  }));
 
 const port = process.env.PORT || 5000;
 
@@ -14,5 +17,8 @@ app.get('/', (req, res) => {
         message: 'Fresh Meat app is here!!'
     });
 });
+
+
+require('./index.js')(app);
 
 export default app;
