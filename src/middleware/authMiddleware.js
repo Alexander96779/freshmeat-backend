@@ -1,8 +1,26 @@
 import joi from '@hapi/joi';
 import UserRepository from '../repository/userRepository';
 import Response from '../utils/response';
+import AuthUtils from '../utils/authUtils';
 
 class AuthMiddleware {
+  static async verifyToken(req, res, next) {
+    try {
+      let token = req.headers.authorization ? req.headers.authorization : req.query.token;
+
+      // Remove Bearer from string
+      token = token.replace(/^Bearer\s+/, "");
+      const payload = AuthUtils.jwtVerify(token);
+      const user = UserRepository.findByEmail(payload.email);
+        if (!user) {
+          return res.status(400).json({ status: 400, error: 'invalid token' });
+        }
+        next();
+    } catch (error) {
+      return res.status(400).json({ status: 400, error: 'invalid token' });
+    }
+  }
+
     static async signup(req, res, next) {
         const Schema = joi.object({
           email: joi.string()
