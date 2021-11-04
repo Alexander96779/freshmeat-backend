@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     delivery: {
       allowNull: true,
       type: DataTypes.BOOLEAN,
-      defaultValue: true
+      defaultValue: false
     },
     status: {
       type: DataTypes.STRING,
