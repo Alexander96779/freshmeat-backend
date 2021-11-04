@@ -29,11 +29,11 @@ module.exports = {
       delivery: {
         allowNull: true,
         type: Sequelize.BOOLEAN,
-        defaultValue: true
+        defaultValue: false
       },
       status: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         default: 'Ordered'
       },
       total_price: {

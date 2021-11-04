@@ -37,12 +37,6 @@ class ProductSchema {
     return schema.validate(data);
   }
 
-    /**
-   * @static
-   * @param {obj} data
-   * @returns {obj} returns schema object
-   * This is used to validate parameters in URL
-  */
   static incidentParam(data) {
     const schema = Joi.object({
       id: Joi.number()
