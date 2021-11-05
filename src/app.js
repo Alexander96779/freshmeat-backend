@@ -1,4 +1,5 @@
 import express from 'express';
+import fileUpload from 'express-fileupload'; 
 
 const app = express();
 
@@ -6,6 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: true
   }));
+app.use(fileUpload());
 
 const port = process.env.PORT || 5000;
 

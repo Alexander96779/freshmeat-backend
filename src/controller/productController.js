@@ -9,9 +9,21 @@ class ProductController {
 
     static async createProduct(req, res) {
         try {
-            const { title, description, img_url, unit_price, status } = req.body;
-            const product = await ProductRepository.create(title, description, img_url, 
-                unit_price, status);
+            const { title, description, unit_price, status } = req.body;
+            if (!req.files) {
+                const response = new Response(res, 400, 'Please upload file');
+                response.sendErrorMessage();
+            }
+            let file = req.files.image;
+            let img_url=file.name;
+    
+            if(file.mimetype == "image/jpg" || file.mimetype == "image/jpeg" || file.mimetype == "image/bmp" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ){                    
+            file.mv('src/uploads/images_upload/'+file.name, async function(err) {
+                if (err) {
+                    const response = new Response(res, 500, err);
+                    response.sendErrorMessage();
+                }
+            const product = await ProductRepository.create(title, description, img_url, unit_price, status);
             const data = {
                 id: product.id,
                 title: product.title,
@@ -22,6 +34,11 @@ class ProductController {
             };
         const response = new Response(res, 200, 'New Product added!', data);
         response.sendSuccessResponse();
+                  })
+        } else {
+            const response = new Response(res, 400, 'Image format is not allowed, use ".gif", ".png", or ".jpeg');
+            response.sendErrorMessage();
+        }
         } catch (error) {
             DbErrorHandler.handleSignupError(res, error);
         }
