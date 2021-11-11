@@ -21,7 +21,14 @@
   },
   "homepage": "https://github.com/Alexander96779/freshmeat-backend#readme",
   "dependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/node": "^7.16.0",
+    "@babel/plugin-transform-runtime": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@hapi/joi": "^17.1.1",
     "@babel/register": "^7.15.3",
+    "babel-plugin-add-module-exports": "^1.0.4",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",
@@ -30,19 +37,12 @@
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.2",
+    "nodemon": "^2.0.14",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.8.0",
     "sequelize-cli": "^6.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15.7",
-    "@babel/core": "^7.15.8",
-    "@babel/node": "^7.16.0",
-    "@babel/plugin-transform-runtime": "^7.15.8",
-    "@babel/preset-env": "^7.15.8",
-    "@hapi/joi": "^17.1.1",
-    "babel-plugin-add-module-exports": "^1.0.4",
-    "nodemon": "^2.0.14"
   }
 }
