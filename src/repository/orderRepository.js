@@ -1,6 +1,6 @@
 import model from '../models';
 
-const { Order } = model;
+const { Order, Product } = model;
 
 class OrderRepository {
 
@@ -36,7 +36,7 @@ class OrderRepository {
 
     static async findAll() {
         try {
-            const records = await Order.findAll({  order: [['createdAt', 'DESC']] });
+            const records = await Order.findAll({ include: {model: Product, as: 'Product'}, order: [['createdAt', 'DESC']] });
             return records;
         } catch (error) {
             throw new Error(error);
