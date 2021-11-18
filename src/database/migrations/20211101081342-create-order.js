@@ -34,7 +34,7 @@ module.exports = {
       status: {
         type: Sequelize.STRING,
         allowNull: true,
-        default: 'Ordered'
+        defaultValue: 'Ordered'
       },
       total_price: {
         type: Sequelize.DOUBLE,
